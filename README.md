@@ -10,7 +10,7 @@ The app will have pages that will display movies such as:
  - Discover :mag:
  - Upcoming :stopwatch:
  - Top rated :fire:
- - Favourites :red_heart:
+ - Favourites :heart:
 
 The user can:
  - Like movies :thumbsup:
