@@ -9,8 +9,9 @@ This is a repository for a ReactJS movie app :clapper: that makes use of the mov
 The app will have pages that will display movies such as: 
  - Discover :mag:
  - Upcoming :stopwatch:
- - Top rated :fire:
+ - Top rated :top:
  - Favourites :heart:
+ - Trending :fire:
 
 The user can:
  - Like movies :thumbsup:
@@ -22,6 +23,7 @@ The API calls can be found here at this link --> https://developer.themoviedb.or
 ### Features.
 
 + Top Rated Movies
++ Trending Movies
 
 ## Setup requirements.
 
@@ -30,10 +32,12 @@ The API calls can be found here at this link --> https://developer.themoviedb.or
 ## API endpoints.
 
 + Top rated list of movies - movie/top_rated
++ Trending movies by day - trending/movie/day
 
 ## Routing.
 
 + /movies/top_rated - displays top rated movies.
++ /movies/trending - displays trending movies.
 
 [If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
