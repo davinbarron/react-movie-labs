@@ -4,16 +4,16 @@ Name: Davin Barron
 
 ## Overview.
 
-This is a repository for a ReactJS movie app :clapper_board: that makes use of the movie database (TMDB) API. 
+This is a repository for a ReactJS movie app :clapper: that makes use of the movie database (TMDB) API. 
 
 The app will have pages that will display movies such as: 
- - Discover :magnifying_glass_tilted_left:
+ - Discover :mag:
  - Upcoming :stopwatch:
  - Top rated :fire:
  - Favourites :red_heart:
 
 The user can:
- - Like movies :thumbs_up:
+ - Like movies :thumbsup:
  - Playlist movies :open_file_folder:
  - Review movies :memo:
  
