@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import Chip from "@mui/material/Chip";
@@ -9,7 +10,7 @@ import StarRate from "@mui/icons-material/StarRate";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
-
+import Button from "@mui/material/Button";
 
 const root = {
     display: "flex",
@@ -72,6 +73,13 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
           </li>
         ))}
       </Paper>
+
+      <Link to={`/movies/${movie.id}/recommendations`}>
+        <Button variant="outlined" size="medium" color="primary">
+          View Recommendations
+        </Button>
+      </Link>
+
       <Fab
         color="secondary"
         variant="extended"
