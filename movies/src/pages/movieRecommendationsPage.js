@@ -28,7 +28,7 @@ const MovieRecommendationsPage = (props) => {
         <>
             <MovieRecommendations 
             recommendations={movie} 
-            title="Recommend Movies"
+            title="Recommended Movies"
             action={(movie) => {
             return <AddToFavoritesIcon movie={movie} />
            }}
