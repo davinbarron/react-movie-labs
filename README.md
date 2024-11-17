@@ -39,6 +39,7 @@ npm start
 + Top rated list of movies - movie/top_rated
 + Trending movies by day - trending/movie/day
 + Recommended list of movies - movie/movie_id/recommendations
++ Movie videos - movie/movie_id/videos
 
 ## Routing.
 
