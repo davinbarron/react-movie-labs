@@ -1,6 +1,5 @@
 import React from "react";
 import { useParams } from 'react-router-dom';
-import PageTemplate from "../components/templateMoviePage";
 import { getMovieRecommendations } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
@@ -27,7 +26,6 @@ const MovieRecommendationsPage = (props) => {
     <>
       {movie ? (
         <>
-          <PageTemplate movie={movie}>
             <MovieRecommendations 
             recommendations={movie} 
             title="Recommend Movies"
@@ -35,10 +33,9 @@ const MovieRecommendationsPage = (props) => {
             return <AddToFavoritesIcon movie={movie} />
            }}
            />
-          </PageTemplate>
         </>
       ) : (
-        <p>Waiting for movie details</p>
+        <p>Waiting for movie recommendations</p>
       )}
     </>
   );
