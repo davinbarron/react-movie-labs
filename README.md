@@ -36,14 +36,15 @@ npm start
 
 ## API endpoints.
 
-+ Top rated list of movies - movies/top_rated
++ Top rated list of movies - movie/top_rated
 + Trending movies by day - trending/movie/day
-+ Recommended list of movies - movies/:id/recommendations
++ Recommended list of movies - movie/movie_id/recommendations
 
 ## Routing.
 
 + /movies/top_rated - displays top rated movies.
 + /movies/trending - displays trending movies.
++ /movies/:id/recommendations - displays recommended movies.
 
 [If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
