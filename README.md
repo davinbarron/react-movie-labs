@@ -24,15 +24,21 @@ The API calls can be found here at this link --> https://developer.themoviedb.or
 
 + Top Rated Movies
 + Trending Movies
++ Recommended Movies
 
 ## Setup requirements.
 
-[ Outline any non-standard setup steps necessary to run your app locally after cloning the repo.]
+```
+git clone https://github.com/davinbarron/react-movie-labs.git
+cd movies
+npm start
+```
 
 ## API endpoints.
 
-+ Top rated list of movies - movie/top_rated
++ Top rated list of movies - movies/top_rated
 + Trending movies by day - trending/movie/day
++ Recommended list of movies - movies/:id/recommendations
 
 ## Routing.
 
