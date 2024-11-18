@@ -1,3 +1,4 @@
+// components/actorDetails/index.js
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -11,8 +12,8 @@ import TemplateActorPage from "../templateActorPage"; // Import the template
 const ActorDetails = () => {
   const { id } = useParams();
   const { data: actor, error, isLoading, isError } = useQuery(
-    ["actorDetails", id],
-    () => getActorDetails(id)
+    ["actorDetails", { id: id }],
+    getActorDetails
   );
 
   if (isLoading) {
@@ -34,13 +35,13 @@ const ActorDetails = () => {
       <Typography variant="h5" component="h3" style={{ marginTop: "2em" }}>
         Known For
       </Typography>
-      <Grid container spacing={3}>
+      {/* <Grid container spacing={3}>
         {actor.movie_credits.cast.map((movie) => (
           <Grid item key={movie.id} xs={12} sm={6} md={4}>
             <MovieCard movie={movie} />
           </Grid>
         ))}
-      </Grid>
+      </Grid> */}
     </TemplateActorPage>
   );
 };
