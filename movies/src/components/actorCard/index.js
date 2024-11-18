@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -6,36 +6,13 @@ import CardMedia from "@mui/material/CardMedia";
 import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import Avatar from "@mui/material/Avatar";
 import { Link } from "react-router-dom";
-import { ActorsContext } from "../../contexts/actorsContext";
-import img from "../../images/person-placeholder.png";
+import img from "../../images/film-poster-placeholder.png";
 
 export default function ActorCard({ actor, action }) {
-  const { favorites, addToFavorites } = useContext(ActorsContext);
-
-  if (favorites.find((id) => id === actor.id)) {
-    actor.favorite = true;
-  } else {
-    actor.favorite = false;
-  }
-
-  const handleAddToFavorite = (e) => {
-    e.preventDefault();
-    addToFavorites(actor);
-  };
-
   return (
     <Card>
       <CardHeader
-        avatar={
-          actor.favorite ? (
-            <Avatar sx={{ backgroundColor: "red" }}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
-        }
         title={
           <Typography variant="h5" component="p">
             {actor.name}
