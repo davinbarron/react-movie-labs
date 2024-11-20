@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "react-query";
-import { getActors } from "../api/tmdb-api"; // We'll create a simple endpoint to fetch actors
-import ActorListPageTemplate from "../components/templateActorListPage"; // Use the template you created for the actor list
+import { getActors } from "../api/tmdb-api";
+import ActorListPageTemplate from "../components/templateActorListPage";
 import Spinner from "../components/spinner";
 import Button from "@mui/material/Button";
 import { Link } from "react-router-dom";

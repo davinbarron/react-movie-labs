@@ -1,15 +1,15 @@
 import React from "react";
-import ActorHeader from "../headerActor"; // Import the ActorHeader component
+import ActorHeader from "../headerActor";
 import Grid from "@mui/material/Grid2";
 import ImageList from "@mui/material/ImageList";
 import ImageListItem from "@mui/material/ImageListItem";
-import { getActorImages } from "../../api/tmdb-api"; // Ensure you have a function to get actor images
+import { getActorImages } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
 import Spinner from '../spinner';
 
 const TemplateActorPage = ({ actor, children }) => {
   const { data, error, isLoading, isError } = useQuery(
-    ["images", { id: actor.id }],
+    ["images", { id: actor.id}],
     getActorImages
   );
 
@@ -20,15 +20,16 @@ const TemplateActorPage = ({ actor, children }) => {
   if (isError) {
     return <h1>{error.message}</h1>;
   }
-  const images = data.profiles; // Assuming actor images are in `profiles` array
+
+  const images = data.profiles 
 
   return (
     <>
       <ActorHeader actor={actor} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
-        <Grid size={{xs: 3}}>
-          <div sx={{
+        <Grid item xs={3}>
+          <div style={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
@@ -43,7 +44,7 @@ const TemplateActorPage = ({ actor, children }) => {
                     <ImageListItem key={image.file_path} cols={1}>
                     <img
                         src={`https://image.tmdb.org/t/p/w500/${image.file_path}`}
-                        alt={image.file_path}
+                        alt={image.profile_path}
                     />
                     </ImageListItem>
                 ))}
@@ -51,7 +52,7 @@ const TemplateActorPage = ({ actor, children }) => {
           </div>
         </Grid>
 
-        <Grid size={{xs: 9}}>
+        <Grid item xs={9}>
           {children}
         </Grid>
       </Grid>

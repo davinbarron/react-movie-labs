@@ -31,13 +31,19 @@ const ActorDetailsPage = () => {
       <Typography variant="h5" component="h3" style={{ marginTop: "2em" }}>
         Known For
       </Typography>
-      <Grid container spacing={3}>
-        {actor.movie_credits.cast.map((movie) => (
-          <Grid item key={movie.id} xs={12} sm={6} md={4}>
-            <MovieCard movie={movie} />
-          </Grid>
-        ))}
-      </Grid>
+      {actor.movie_credits && actor.movie_credits.cast ? (
+        <Grid container spacing={3}>
+          {actor.movie_credits.cast.map((movie) => (
+            <Grid item key={movie.id} xs={12} sm={6} md={4}>
+              <MovieCard movie={movie} />
+            </Grid>
+          ))}
+        </Grid>
+      ) : (
+        <Typography variant="h6" component="p">
+          No movie credits available.
+        </Typography>
+      )}
     </TemplateActorPage>
   );
 };
