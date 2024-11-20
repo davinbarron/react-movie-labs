@@ -3,6 +3,8 @@ import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
+import MovieCredits from "../movieCredits";
+import StarRate from "@mui/icons-material/StarRate";
 
 const root = {
     display: "flex",
@@ -10,7 +12,7 @@ const root = {
     flexWrap: "wrap",
     listStyle: "none",
     padding: 1.5,
-    margin: 0,
+    margin: "1em",
 };
 const chip = { margin: 0.5 };
 
@@ -23,27 +25,25 @@ const ActorDetails = ({actor}) => {
         {actor.name}
       </Typography>
 
-      <Paper component="ul" sx={{ ...root }}>
-        <li>
-          <Chip label="Photos" sx={{ ...chip }} color="primary" />
-        </li>
-        {actor.images && actor.images.profiles.map((img) => (
-          <li key={img.file_path}>
-            <img
-              src={`https://image.tmdb.org/t/p/w500/${img.file_path}`}
-              alt={actor.name}
-              style={{ width: '100px', height: '150px', margin: '0.5em' }}
-            />
-          </li>
-        ))}
-      </Paper>
-
-      <Typography variant="h5" component="h3" style={{ marginTop: "2em" }}>
+      <Typography variant="h5" component="h3" style={{ margin: "1em" }}>
         Biography
       </Typography>
       <Typography variant="h6" component="p">
         {actor.biography}
       </Typography>
+
+      <Paper component="ul" sx={{ ...root }}>
+      <Chip label="Popularity" sx={{...chip}} color="primary" />
+      <Chip
+          icon={<StarRate />}
+          label={`${actor.popularity.toLocaleString()}`}
+      />
+      </Paper>
+
+      <Typography variant="h5" component="h3" style={{ marginTop: "2em" }}>
+        Known For
+      </Typography>
+      <MovieCredits id={actor.id} />
 
       <Fab
         color="secondary"

@@ -28,8 +28,8 @@ const TemplateActorPage = ({ actor, children }) => {
       <ActorHeader actor={actor} />
 
       <Grid container spacing={5} style={{ padding: "15px" }}>
-        <Grid item xs={3}>
-          <div style={{
+        <Grid size={{xs: 3}}>
+          <div sx={{
             display: "flex",
             flexWrap: "wrap",
             justifyContent: "space-around",
@@ -52,7 +52,7 @@ const TemplateActorPage = ({ actor, children }) => {
           </div>
         </Grid>
 
-        <Grid item xs={9}>
+        <Grid size={{xs: 9}}>
           {children}
         </Grid>
       </Grid>

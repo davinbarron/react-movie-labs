@@ -5,11 +5,14 @@ import { getActorDetails } from "../api/tmdb-api";
 import Spinner from "../components/spinner";
 import Typography from "@mui/material/Typography";
 import TemplateActorPage from "../components/templateActorPage"; // Use the template you created for actor details
-import MovieCredits from "../components/movieCredits";
+import ActorDetails from "../components/actorDetails";
 
 const ActorDetailsPage = () => {
   const { id } = useParams();
-  const { data: actor, error, isLoading, isError } = useQuery(["actorDetails", { id }], getActorDetails);
+  const { data: actor, error, isLoading, isError } = useQuery(
+    ["actor", { id: id }], 
+    getActorDetails
+  );
 
   if (isLoading) {
     return <Spinner />;
@@ -21,16 +24,7 @@ const ActorDetailsPage = () => {
 
   return (
     <TemplateActorPage actor={actor}>
-      <Typography variant="h4" component="h2">
-        {actor.name}
-      </Typography>
-      <Typography variant="h6" component="p">
-        {actor.biography}
-      </Typography>
-      <Typography variant="h5" component="h3" style={{ marginTop: "2em" }}>
-        Known For
-      </Typography>
-      <MovieCredits id={id} />
+      <ActorDetails actor={actor}/>
     </TemplateActorPage>
   );
 };

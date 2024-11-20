@@ -2,15 +2,16 @@ import React from "react";
 import Grid from "@mui/material/Grid2";
 import { getActorCredits } from "../../api/tmdb-api";
 import { useQuery } from "react-query";
+import { useParams } from "react-router-dom";
 import Spinner from '../../components/spinner';
 import { Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import MovieCreditsList from "../movieCreditsList";
 
-const MovieCredits = ({ id }) => {
-
+const MovieCredits = () => {
+  const { id } = useParams();
   const { data, error, isLoading, isError } = useQuery(
-    ["credits", id],
+    ["credits", { id: id }],
     getActorCredits
   );
 
@@ -34,7 +35,7 @@ const MovieCredits = ({ id }) => {
       }}
     >
       <Typography variant="h4" component="h3" sx={{ margin: "1em" }}>
-        Cast
+        Starred In
       </Typography>
 
       <Grid container>
