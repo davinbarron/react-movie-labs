@@ -69,3 +69,9 @@ Emojibase:
 Made use of the emojibase to enhance my readme with emojis
 
 + Emoji shortcodes - https://emojibase.dev/shortcodes/?
+
+IFrame API:
+
+The IFrame player API lets you embed a YouTube video player on your website and control the player using JavaScript.
+
++ Iframe API - https://developers.google.com/youtube/iframe_api_reference

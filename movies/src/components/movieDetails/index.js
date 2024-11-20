@@ -11,6 +11,7 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import MovieVideos from "../movieVideos";
 
 const root = {
     display: "flex",
@@ -74,11 +75,20 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         ))}
       </Paper>
 
+      <br></br>
+      <Typography variant="h5" component="h3">
+        Movie Recommendations
+      </Typography>
+      <br></br>
       <Link to={`/movies/${movie.id}/recommendations`}>
         <Button variant="outlined" size="medium" color="primary">
           View Recommendations
         </Button>
       </Link>
+      <br></br>
+      <br></br>
+
+      <MovieVideos movie={movie} />
 
       <Fab
         color="secondary"

@@ -173,6 +173,12 @@ export const getMovie = (args) => {
     const { id } = idPart;
     return fetch(
       `https://api.themoviedb.org/3/person/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}`
+
+  export const getMovieVideos = ({ queryKey }) => {
+    const [, idPart] = queryKey;
+    const { id } = idPart;
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/videos?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&page=1`
     ).then((response) => {
       if (!response.ok) {
         return response.json().then((error) => {
