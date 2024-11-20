@@ -11,7 +11,7 @@ import MovieCastList from "../movieCastList";
 const MovieCast = () => {
   const { id } = useParams();
   const { data, error, isLoading, isError } = useQuery(
-    ["cast", id],
+    ["cast", { id: id }],
     getMovieCast
   );
 
