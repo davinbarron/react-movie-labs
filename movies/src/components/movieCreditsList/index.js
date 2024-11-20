@@ -1,7 +1,6 @@
 import React from "react";
 import Grid from "@mui/material/Grid2";
-import MovieCredit from "../MovieCredit";
-
+import MovieCredit from "../movieCredits";
 
 const MovieCreditsList = (props) =>{
   let movieCredits = props.credits.map((m) => (

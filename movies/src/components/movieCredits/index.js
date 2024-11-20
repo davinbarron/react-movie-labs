@@ -5,7 +5,7 @@ import { useQuery } from "react-query";
 import Spinner from '../../components/spinner';
 import { Paper } from "@mui/material";
 import Typography from "@mui/material/Typography";
-import MovieCreditsList from "../MovieCreditList";
+import MovieCreditsList from "../movieCreditsList";
 
 const MovieCredits = ({ id }) => {
 
