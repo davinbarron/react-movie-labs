@@ -25,6 +25,8 @@ The API calls can be found here at this link --> https://developer.themoviedb.or
 + Top Rated Movies
 + Trending Movies
 + Recommended Movies
++ Movie Videos
++ Discover Actors
 
 ## Setup requirements.
 
@@ -40,12 +42,19 @@ npm start
 + Trending movies by day - trending/movie/day
 + Recommended list of movies - movie/movie_id/recommendations
 + Movie videos - movie/movie_id/videos
++ Movie cast - movie/movie_id/credits
++ Actors' movies - person/person_id/movie_credits
++ Actor images - person/person_id/images
++ Popular actor - person/popular
++ Actor details - person/person_id
 
 ## Routing.
 
 + /movies/top_rated - displays top rated movies.
 + /movies/trending - displays trending movies.
 + /movies/:id/recommendations - displays recommended movies.
++ /actors - displays actors.
++ /actors/:id - displays actor details.
 
 [If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
 
