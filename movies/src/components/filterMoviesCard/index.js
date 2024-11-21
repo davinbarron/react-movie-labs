@@ -51,11 +51,11 @@ export default function FilterMoviesCard(props) {
   };
 
   const handleRatingChange = (e, props) => {
-    handleChange(e, "rating", e.target.value);
+    handleChange(e, "ratings", e.target.value);
   };
 
   const handleDateChange = (e) => {
-    handleChange(e, "date", e.target.value)
+    handleChange(e, "releaseDate", e.target.value)
   };
 
   return (
@@ -112,7 +112,7 @@ export default function FilterMoviesCard(props) {
           <InputLabel id="release-date-label">Release Date</InputLabel>
           <TextField
           labelId="release-date-label"
-          id="release-date"
+          id="releaseDate"
           type="date"
           variant="filled"
           value={props.releaseDateFilter}
