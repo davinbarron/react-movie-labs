@@ -17,6 +17,7 @@ import MovieRecommendationsPage from "./pages/movieRecommendationsPage";
 import ActorHomePage from "./pages/actorHomePage";
 import ActorDetailsPage from "./pages/actorDetailsPage";
 import PlaylistPage from "./pages/playlistPage";
+import ThemeContextProvider from "./contexts/themeContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,4 +58,8 @@ const App = () => {
 };
 
 const rootElement = createRoot( document.getElementById("root") )
-rootElement.render(<App />);
+rootElement.render(
+  <ThemeContextProvider>
+    <App />
+  </ThemeContextProvider>
+);
