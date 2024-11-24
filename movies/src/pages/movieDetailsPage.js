@@ -6,7 +6,6 @@ import { getMovie } from '../api/tmdb-api'
 import { useQuery } from "react-query";
 import Spinner from '../components/spinner'
 import MovieCast from "../components/movieCast";
-import Ratings from "../components/ratings";
 // import useMovie from "../hooks/useMovie";   Redundant
 
 const MoviePage = (props) => {
@@ -31,7 +30,6 @@ const MoviePage = (props) => {
           <PageTemplate movie={movie}>
             <MovieDetails movie={movie} />
             <MovieCast id={id}/>	
-            <Ratings movie={movie} />
           </PageTemplate>
         </>
       ) : (
