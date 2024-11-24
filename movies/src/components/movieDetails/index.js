@@ -12,6 +12,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import MovieVideos from "../movieVideos";
+import Ratings from "../ratings";
 
 const root = {
     display: "flex",
@@ -86,6 +87,10 @@ const MovieDetails = ({ movie }) => {  // Don't miss this!
         </Button>
       </Link>
       <br></br>
+      <br></br>
+
+      <Ratings movie={movie} />
+
       <br></br>
 
       <MovieVideos movie={movie} />

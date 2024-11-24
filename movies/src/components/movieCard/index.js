@@ -1,4 +1,4 @@
-import React, { useContext  } from "react";
+import React, { useContext } from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -7,6 +7,7 @@ import CardHeader from "@mui/material/CardHeader";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import PlaylistAddCheckIcon from "@mui/icons-material/PlaylistAddCheck"; // Eye icon for playlist
 import CalendarIcon from "@mui/icons-material/CalendarTodayTwoTone";
 import StarRateIcon from "@mui/icons-material/StarRate";
 import IconButton from "@mui/material/IconButton";
@@ -15,15 +16,13 @@ import img from '../../images/film-poster-placeholder.png';
 import { Link } from "react-router-dom";
 import Avatar from '@mui/material/Avatar';
 import { MoviesContext } from "../../contexts/moviesContext";
+import AddToPlaylist from '../cardIcons/addToPlaylist';
 
 export default function MovieCard({ movie, action }) {
-  const { favorites, addToFavorites } = useContext(MoviesContext);
+  const { favorites, playlist, addToFavorites } = useContext(MoviesContext);
 
-  if (favorites.find((id) => id === movie.id)) {
-    movie.favorite = true;
-  } else {
-    movie.favorite = false
-  }
+  movie.favorite = favorites.includes(movie.id);
+  movie.playlist = playlist.includes(movie.id);
 
   const handleAddToFavorite = (e) => {
     e.preventDefault();
@@ -34,11 +33,18 @@ export default function MovieCard({ movie, action }) {
     <Card>
       <CardHeader
         avatar={
-          movie.favorite ? (
-            <Avatar sx={{ backgroundColor: 'red' }}>
-              <FavoriteIcon />
-            </Avatar>
-          ) : null
+          <>
+            {movie.favorite && (
+              <Avatar sx={{ backgroundColor: 'red' }}>
+                <FavoriteIcon />
+              </Avatar>
+            )}
+            {movie.playlist && (
+              <Avatar sx={{ backgroundColor: 'blue' }}>
+                <PlaylistAddCheckIcon />
+              </Avatar>
+            )}
+          </>
         }
         title={
           <Typography variant="h5" component="p">
@@ -79,6 +85,8 @@ export default function MovieCard({ movie, action }) {
           More Info ...
         </Button>
       </Link>
+
+      {movie.isUpcoming}
       
     </CardActions>
     </Card>

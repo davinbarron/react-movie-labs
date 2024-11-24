@@ -16,6 +16,8 @@ import TrendingMoviesPage from "./pages/trendingMoviesPage";
 import MovieRecommendationsPage from "./pages/movieRecommendationsPage";
 import ActorHomePage from "./pages/actorHomePage";
 import ActorDetailsPage from "./pages/actorDetailsPage";
+import PlaylistPage from "./pages/playlistPage";
+import ThemeContextProvider from "./contexts/themeContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,12 +33,14 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <ThemeContextProvider>
         <SiteHeader />
         <MoviesContextProvider>
           <Routes>
             <Route path="/reviews/:id" element={ <MovieReviewPage /> } />
             <Route path="/reviews/form" element={ <AddMovieReviewPage /> } />
             <Route path="/movies/favorites" element={<FavoriteMoviesPage />} />
+            <Route path="/movies/playlist" element={<PlaylistPage />} />
             <Route path="/movies/:id" element={<MoviePage />} />
             <Route path="/movies/:id/recommendations" element={<MovieRecommendationsPage />} />
             <Route path="/movies/upcoming" element={<UpcomingPage />} />
@@ -48,6 +52,7 @@ const App = () => {
             <Route path="*" element={ <Navigate to="/" /> } />
           </Routes>
         </MoviesContextProvider>
+      </ThemeContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

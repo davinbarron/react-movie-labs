@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -11,10 +11,13 @@ import { useNavigate } from "react-router-dom";
 import { styled } from '@mui/material/styles';
 import { useTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import { ThemesContext } from '../../contexts/themeContext';
+import Switch from "@mui/material/Switch";
 
 const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 
 const SiteHeader = ({ history }) => {
+  const { toggleDarkMode, toggleDarkTheme } = useContext(ThemesContext);
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
 
@@ -27,6 +30,7 @@ const SiteHeader = ({ history }) => {
     { label: "Home", path: "/" },
     { label: "Favorites", path: "/movies/favorites" },
     { label: "Upcoming", path: "/movies/upcoming" },
+    { label: "Playlist", path: "/movies/playlist" },
     { label: "Top Rated", path: "/movies/top_rated" },
     { label: "Trending", path: "/movies/trending" },
     { label: "Actors", path: "/actors" },
@@ -50,6 +54,10 @@ const SiteHeader = ({ history }) => {
           <Typography variant="h6" sx={{ flexGrow: 1 }}>
             All you ever wanted to know about Movies!
           </Typography>
+          <Typography variant="body1" style={{ margin: '10px' }}> 
+              {toggleDarkMode ? 'Dark Mode' : 'Light Mode'} 
+          </Typography> 
+          <Switch checked={toggleDarkMode} onChange={toggleDarkTheme} />
             {isMobile ? (
               <>
                 <IconButton

@@ -50,6 +50,18 @@ export default function FilterMoviesCard(props) {
     handleChange(e, "genre", e.target.value);
   };
 
+  const handleRatingChange = (e, props) => {
+    handleChange(e, "ratings", e.target.value);
+  };
+
+  const handleDateChange = (e) => {
+    handleChange(e, "releaseDate", e.target.value)
+  };
+
+  const handleSortChange = (e) => { 
+    handleChange(e, "sort", e.target.value); 
+  };
+
   return (
     <Card 
       sx={{
@@ -87,6 +99,46 @@ export default function FilterMoviesCard(props) {
               );
             })}
           </Select>
+        </FormControl>
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="ratings-label">Ratings</InputLabel>
+          <TextField
+            labelId="ratings-label"
+            id="ratings-select"
+            type="ratings"
+            variant="filled"
+            value={props.ratingsFilter}
+            onChange={handleRatingChange}
+          >
+          </TextField>
+        </FormControl>
+        <FormControl sx={{...formControl}}>
+          <InputLabel id="release-date-label">Release Date</InputLabel>
+          <TextField
+          labelId="release-date-label"
+          id="releaseDate"
+          type="date"
+          variant="filled"
+          value={props.releaseDateFilter}
+          onChange={handleDateChange}
+         />
+        </FormControl>
+        <FormControl sx={{ ...formControl }}> 
+          <InputLabel id="sort-label">Sort By</InputLabel> 
+          <Select 
+          labelId="sort-label" 
+          id="sort-select" 
+          defaultValue=""
+          value={props.sortBy} 
+          onChange={handleSortChange} 
+          > 
+            <MenuItem value="titleAsc">Title (A-Z)</MenuItem> 
+            <MenuItem value="titleDesc">Title (Z-A)</MenuItem> 
+            <MenuItem value="ratingAsc">Rating (Low-High)</MenuItem> 
+            <MenuItem value="ratingDesc">Rating (High-Low)</MenuItem> 
+            <MenuItem value="releaseDateAsc">Release Date (Old-New)</MenuItem> 
+            <MenuItem value="releaseDateDesc">Release Date (New-Old)</MenuItem> 
+          </Select> 
         </FormControl>
       </CardContent>
       <CardMedia

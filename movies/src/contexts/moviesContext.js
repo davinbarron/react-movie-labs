@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { addRating, deleteRating } from '../api/tmdb-api';
 
 export const MoviesContext = React.createContext(null);
 
@@ -6,6 +7,7 @@ const MoviesContextProvider = (props) => {
   const [favorites, setFavorites] = useState( [] )
   const [myReviews, setMyReviews] = useState( {} ) 
   const [playlist, setPlaylist] = useState( [] )
+  const [ratings, setRatings] = useState({})
 
   const addToFavorites = (movie) => {
     let newFavorites = [];
@@ -40,17 +42,55 @@ const MoviesContextProvider = (props) => {
     }
     setPlaylist(newPlaylist)
   };
-  console.log(playlist);
+
+  const removeFromPlaylist = (movie) => { 
+    setPlaylist(playlist.filter((mId) => mId !== movie.id)); 
+  };
+
+  //console.log(playlist);
+
+  const handleAddRating = async (movie, rating) => 
+    { 
+      try 
+      { 
+        await addRating(movie.id, rating); 
+        setRatings({ ...ratings, [movie.id]: rating }); 
+      } 
+      catch (error) 
+      { 
+        console.error("Error adding rating:", error); 
+      } 
+    }; 
+    
+  const handleDeleteRating = async (movie) => 
+    { 
+      try 
+      { 
+        await deleteRating(movie.id); 
+        const newRatings = { ...ratings }; 
+        delete newRatings[movie.id]; 
+        setRatings(newRatings); 
+      } 
+      catch (error) 
+      { 
+        console.error("Error deleting rating:", error); 
+      } 
+    };
 
 
   return (
     <MoviesContext.Provider
       value={{
         favorites,
+        playlist,
+        ratings,
         addToFavorites,
         removeFromFavorites,
         addReview,
-        addToPlaylist
+        addToPlaylist,
+        removeFromPlaylist,
+        handleAddRating,
+        handleDeleteRating
       }}
     >
       {props.children}
