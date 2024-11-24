@@ -2,6 +2,8 @@ import React from 'react';
 import { Button, ButtonGroup } from '@mui/material';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+    const maxPage = Math.min(totalPages, 100);
+    
   const handleFirstPage = () => onPageChange(1);
   const handlePreviousPage = () => onPageChange(currentPage - 1);
   const handleNextPage = () => onPageChange(currentPage + 1);

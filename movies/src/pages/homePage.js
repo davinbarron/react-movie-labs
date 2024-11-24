@@ -35,7 +35,7 @@ const HomePage = (props) => {
     />
     <Pagination 
     currentPage={page} 
-    totalPages={data.total_pages} 
+    totalPages={100} 
     onPageChange={(newPage) => setPage(newPage)} 
     />
     </>
