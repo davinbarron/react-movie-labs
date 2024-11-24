@@ -183,7 +183,7 @@ export const getMovie = (args) => {
     .catch((error) => {
       throw error;
     });
-  };
+  };  
 
   export const getMovieVideos = ({ queryKey }) => {
     const [, idPart] = queryKey;
