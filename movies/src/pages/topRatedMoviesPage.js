@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { getTopRatedMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToFavoritesIcon from '../components/cardIcons/addToFavorites';
+import Pagination from '../components/pagination';
 
 const TopRatedMoviesPage = (props) => {
-    
-  const { data, error, isLoading, isError } = useQuery('topRated', getTopRatedMovies);
+  const [page, setPage] = useState(1); 
+  const { data, error, isLoading, isError } = useQuery(['topRated', page], () => getTopRatedMovies(page));
 
   if (isLoading) {
     return <Spinner />;
@@ -25,6 +26,7 @@ const TopRatedMoviesPage = (props) => {
   const addToFavorites = (movieId) => true;
 
   return (
+    <>
     <PageTemplate
       title="Top Rated Movies"
       movies={movies}
@@ -32,6 +34,12 @@ const TopRatedMoviesPage = (props) => {
         return <AddToFavoritesIcon movie={movie} />;
       }}
     />
+    <Pagination 
+    currentPage={page} 
+    totalPages={100} 
+    onPageChange={(newPage) => setPage(newPage)} 
+    />
+    </>
   );
 };
 
