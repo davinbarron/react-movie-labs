@@ -27,6 +27,11 @@ The API calls can be found here at this link --> https://developer.themoviedb.or
 + Recommended Movies
 + Movie Videos
 + Discover Actors
++ Sorting and Searching movies
++ Playlist upcoming movies
++ Dark mode
++ Rate movies
++ Pagination
 
 ## Setup requirements.
 
@@ -47,6 +52,7 @@ npm start
 + Actor images - person/person_id/images
 + Popular actor - person/popular
 + Actor details - person/person_id
++ Add and delete rating - movie/movie_id/rating
 
 ## Routing.
 
@@ -55,14 +61,9 @@ npm start
 + /movies/:id/recommendations - displays recommended movies.
 + /actors - displays actors.
 + /actors/:id - displays actor details.
-
-[If relevant, state what aspects of your app are protected (i.e. require authentication) and what is public.]
++ /movies/playlist - displays playlist of upcoming movies.
 
 ## Independent learning (If relevant).
-
-Itemize the technologies/techniques you researched independently and adopted in your project, 
-i.e. aspects not covered in the lectures/labs. Include the source code filenames that illustrate these 
-(we do not require code excerpts) and provide references to the online resources that helped you (articles/blogs).
 
 Emojibase:
 
@@ -75,3 +76,9 @@ IFrame API:
 The IFrame player API lets you embed a YouTube video player on your website and control the player using JavaScript.
 
 + Iframe API - https://developers.google.com/youtube/iframe_api_reference
+
+Geeks for Geeks:
+
+Learned how to paginate pages
+
++ Pagination: https://www.geeksforgeeks.org/how-to-customize-the-labels-for-previous-and-next-buttons-in-react-bootstrap-pagination/
