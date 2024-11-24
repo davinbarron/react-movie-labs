@@ -33,6 +33,7 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
+      <ThemeContextProvider>
         <SiteHeader />
         <MoviesContextProvider>
           <Routes>
@@ -51,6 +52,7 @@ const App = () => {
             <Route path="*" element={ <Navigate to="/" /> } />
           </Routes>
         </MoviesContextProvider>
+      </ThemeContextProvider>
       </BrowserRouter>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
@@ -58,8 +60,4 @@ const App = () => {
 };
 
 const rootElement = createRoot( document.getElementById("root") )
-rootElement.render(
-  <ThemeContextProvider>
-    <App />
-  </ThemeContextProvider>
-);
+rootElement.render(<App />);
