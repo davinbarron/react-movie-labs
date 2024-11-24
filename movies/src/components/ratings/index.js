@@ -23,7 +23,9 @@ const Ratings = ({ movie }) => {
 
   return (
     <Box component="fieldset" mb={3} borderColor="transparent">
-      <Typography component="legend">Rate this movie</Typography>
+      <Typography variant="h5" component="h3">
+        Rate this movie
+      </Typography>
       <Rating
         name={`rating-${movie.id}`}
         value={value}
