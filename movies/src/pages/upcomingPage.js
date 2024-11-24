@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import { getUpcomingMovies } from "../api/tmdb-api";
 import PageTemplate from '../components/templateMovieListPage';
 import { useQuery } from 'react-query';
 import Spinner from '../components/spinner';
 import AddToPlaylistIcon from '../components/cardIcons/addToPlaylist';
+import Pagination from "../components/pagination";
 
 const UpcomingPage = (props) => {
-  const { data, error, isLoading, isError } = useQuery('movie', getUpcomingMovies)
+  const [page, setPage] = useState(1);
+  const { data, error, isLoading, isError } = useQuery(['movie', page], () => getUpcomingMovies(page));
 
   if (isLoading) {
     return <Spinner />
@@ -23,6 +25,7 @@ const UpcomingPage = (props) => {
   const addToPlaylist = (movieId) => true
 
   return (
+    <>
     <PageTemplate
       title="Upcoming Movies"
       movies={movies}
@@ -31,6 +34,12 @@ const UpcomingPage = (props) => {
         return <AddToPlaylistIcon movie={movie} />
       }}
     />
+    <Pagination 
+    currentPage={page} 
+    totalPages={100} 
+    onPageChange={(newPage) => setPage(newPage)} 
+    />
+    </>
   );
 };
 
