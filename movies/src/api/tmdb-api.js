@@ -258,3 +258,49 @@ export const getMovie = (args) => {
       throw error
    });
   };
+
+  export const addRating = (movieId, rating) => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/rating?api_key=${process.env.REACT_APP_TMDB_KEY}`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          'Authorization': `Bearer ${process.env.REACT_APP_TMDB_ACCESS_TOKEN}` // Use this if needed
+        },
+        body: JSON.stringify({ value: rating })
+      }
+    ).then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    }).catch((error) => {
+      throw error;
+    });
+  };
+  
+  export const deleteRating = (movieId) => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/rating?api_key=${process.env.REACT_APP_TMDB_KEY}`,
+      {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json;charset=utf-8',
+          'Authorization': `Bearer ${process.env.REACT_APP_TMDB_ACCESS_TOKEN}` // Use this if needed
+        }
+      }
+    ).then((response) => {
+      if (!response.ok) {
+        return response.json().then((error) => {
+          throw new Error(error.status_message || "Something went wrong");
+        });
+      }
+      return response.json();
+    }).catch((error) => {
+      throw error;
+    });
+  };
+  
